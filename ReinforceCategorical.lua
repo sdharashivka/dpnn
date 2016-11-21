@@ -20,7 +20,8 @@ function ReinforceCategorical:updateOutput(input)
       input.multinomial(self._index, input, 1)
       -- one hot encoding
       self.output:zero()
-      self.output:scatter(2, self._index, 1)
+      self.output[self._index] = 1
+      --self.output:scatter(2, self._index, 1)
    else
       -- use p for evaluation
       self.output:copy(input)
